@@ -130,9 +130,17 @@ public class StickerSet {
         if emojis.isEmpty {
             throw StickersError.emojiIsEmpty
         }
+        if !arrayContainsEmoji(array: emojis) {
+            throw StickersError.emojisInvalid
+        }
         if try self.validateData(data) {
             self.stickers.append(Sticker(data: data, emojis: emojis))
         }
+    }
+
+    /// Returns true if an array contains at least 1 valid emoji
+    func arrayContainsEmoji(array: [String]) -> Bool {
+        return array.contains { $0.containsEmoji }
     }
     
     /**
