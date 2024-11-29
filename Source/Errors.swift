@@ -8,5 +8,6 @@ public enum StickersError: Error {
     case dataTypeMismatch
     case setIsEmpty
     case emojiIsEmpty
+    case emojisInvalid
     case telegramNotInstalled
 }
